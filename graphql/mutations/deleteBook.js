@@ -10,10 +10,10 @@ exports.remove = {
       type: new GraphQLNonNull(GraphQLString)
     }
   },
-  resolve(root, args) {
-    const removedBook = bookModel.findByIdAndRemove(args.id).exec();
+  resolve: async(root, args)=> {
+    const removedBook = await bookModel.findByIdAndRemove(args.id)
     if (!removedBook) {
-      throw new Error('Error')
+      throw new Error('error')
     }
     return removedBook;
   }

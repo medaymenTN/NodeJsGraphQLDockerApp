@@ -17,8 +17,8 @@ exports.update = {
             type: new GraphQLNonNull(GraphQLString),
         }
     },
-    resolve(root, args) {
-        const UpdatedBook = bookModel.findByIdAndUpdate(args.id).exec();
+    resolve: async(root, args) =>{
+        const UpdatedBook = await bookModel.findByIdAndUpdate(args.id,args);
         if (!UpdatedBook) {
           throw new Error('Error')
         }

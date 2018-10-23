@@ -10,10 +10,10 @@ exports.BookQuery = new GraphQLObjectType({
     return {
       books: {
         type: new GraphQLList(bookType),
-        resolve: function () {
-          const books = BookModel.find().exec()
+        resolve:  async ()=> {
+          const books = await BookModel.find()
           if (!books) {
-            throw new Error('Error')
+            throw new Error('error while fetching data')
           }
           return books
         }

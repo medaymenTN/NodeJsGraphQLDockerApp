@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose');
-const graphqlHTTP = require("express-graphql");
+const graphqlExpress = require("express-graphql");
+const bookSchema = require('./graphql/BookSchema').BookSchema;
 
 mongoose.connect('mongodb://mongo/myappdb', (err) => {
     if (err) throw err;
@@ -17,8 +18,8 @@ app.listen(app.get('port'),  () =>{
 });
 
 
-const bookSchema = require('./graphql/BookSchema').BookSchema;
-app.use('/graphql', graphqlHTTP({
+
+app.use('/graphql', graphqlExpress({
     schema: bookSchema,
     rootValue: global,
     graphiql: true

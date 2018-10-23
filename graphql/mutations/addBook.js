@@ -12,12 +12,11 @@ exports.add = {
         type: new GraphQLNonNull(GraphQLString),
       }
   },
-  resolve(root, args) {
-      console.log(args)
+  resolve: async(root, args)=> {
     const uModel = new bookModel(args);
-    const newBook = uModel.save();
+    const newBook = await uModel.save();
     if (!newBook) {
-      throw new Error('Error');
+      throw new Error('error');
     }
     return newBook
   }
