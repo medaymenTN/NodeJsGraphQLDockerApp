@@ -1,4 +1,4 @@
-#### NodeJsGraphQLDockerApp
+# NodeJsGraphQLDockerApp
 Simple crud App made with nodeJs and GraphQL under docker container
 
 ## Requirments 
