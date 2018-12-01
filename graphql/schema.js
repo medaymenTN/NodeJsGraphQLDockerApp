@@ -15,7 +15,7 @@ const bookSchema = new GraphQLSchema({
 });
 
 //Auto Schema
-var autoQueryType = require('./queries/bookQuery').bookQuery;
+var autoQueryType = require('./queries/autoQuery').autoQuery;
 
 
 const autoSchema = new GraphQLSchema({

@@ -15,6 +15,7 @@ exports.bookQuery = new GraphQLObjectType({
           if (!books) {
             throw new Error('error while fetching data')
           }
+          console.log(books);
           return books
         }
       }

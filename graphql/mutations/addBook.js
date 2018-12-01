@@ -17,7 +17,6 @@ exports.add = {
     const uModel = new bookModel(args);
     const newBook = await uModel.save();
     if (!newBook) {
-      console.log('error chm75!');
       throw new Error('error');
     }
     return newBook

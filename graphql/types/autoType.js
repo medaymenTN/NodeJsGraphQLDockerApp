@@ -17,6 +17,9 @@ exports.autoType = new GraphQLObjectType({
       modelo: {
         type: GraphQLString
       },
+      tipo: {
+        type: GraphQLString
+      },
       patente: {
         type: GraphQLString
       },
