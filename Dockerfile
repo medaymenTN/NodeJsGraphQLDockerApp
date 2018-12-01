@@ -5,9 +5,9 @@ RUN mkdir -p /usr/src/graphqlApp
 WORKDIR /usr/src/graphqlApp
 #copy package.json file under the working directory 
 COPY package.json /usr/src/graphqlApp/
-RUN npm install
+RUN npm install -g nodemon
 #copy all your files under the working directory
 COPY . /usr/src/graphqlApp
 EXPOSE 4000
 #start nodejs server 
-CMD npm start
+CMD [ "npm", "start" ]
