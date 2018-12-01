@@ -4,6 +4,8 @@ services:
     container_name: graphqlapp
     restart: always
     build: .
+    volumes:
+      - ./src:/usr/src/app
     ports:
       - "4000:4000"
     links:
