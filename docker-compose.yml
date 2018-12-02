@@ -2,10 +2,10 @@ version: "2"
 services:
   app:
     container_name: graphqlapp
-    restart: always
-    build: .
+    #restart: always
     volumes:
-      - ./src:/usr/src/app
+      - .:/usr/src/graphqlApp
+    build: .
     ports:
       - "4000:4000"
     links:

@@ -5,7 +5,7 @@ RUN mkdir -p /usr/src/graphqlApp
 WORKDIR /usr/src/graphqlApp
 #copy package.json file under the working directory 
 COPY package.json /usr/src/graphqlApp/
-RUN npm install -g nodemon
+RUN npm install
 #copy all your files under the working directory
 COPY . /usr/src/graphqlApp
 EXPOSE 4000
