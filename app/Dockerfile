@@ -10,4 +10,4 @@ RUN npm install
 COPY . /usr/src/graphqlApp
 EXPOSE 4000
 #start nodejs server 
-CMD [ "npm", "start" ]
+CMD npm start

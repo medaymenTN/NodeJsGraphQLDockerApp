@@ -15,6 +15,7 @@ const bookSchema = new GraphQLSchema({
 });
 
 //Auto Schema
+/*
 var autoQueryType = require('./queries/autoQuery').autoQuery;
 
 
@@ -25,8 +26,9 @@ const autoSchema = new GraphQLSchema({
         fields: mutation
     })
 });
+*/
 
 
 
 
-module.exports = { bookSchema, autoSchema };
+module.exports = { bookSchema };

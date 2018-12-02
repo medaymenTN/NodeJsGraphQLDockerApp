@@ -22,12 +22,12 @@ app.listen(app.get('port'), () => {
 app.use('/graphql', graphqlExpress({
     schema: schema,
     rootValue: global,
-    graphiql: trued
+    graphiql: true
 }));
 
 app.get('/', (req, res) => {
 
-            res.send("hello world 2223333! ")
+            res.send("Ursprung Sistema Taller New Generation ")
 
         }
 );
