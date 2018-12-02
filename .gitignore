@@ -1,0 +1,6 @@
+#folders to ignore
+.idea/
+data/
+src/
+node-modules/
+
