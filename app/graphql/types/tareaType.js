@@ -23,31 +23,36 @@ exports.tareaType = new GraphQLObjectType({
             idLocalizacion:{
                 type: GraphQLInt
             },
-            EstadoRep: {
+            estadoReparacion: {
                 type: GraphQLString
             },
-            FechaModificacion: {
+            fechaModificacion: {
+                type: GraphQLString,
+                default: Date
+            },
+            color: {
                 type: GraphQLString
             },
-            Color: {
+            comentario: {
                 type: GraphQLString
             },
-            Comentario: {
-                type: GraphQLString
+            reemplazar: {
+                type: GraphQLBoolean,
+                default: false
             },
-            Reemplazar: {
-                type: GraphQLBoolean
+            reparar: {
+                type: GraphQLBoolean,
+                default: false
             },
-            Reparar: {
-                type: GraphQLBoolean
+            cromar: {
+                type: GraphQLBoolean,
+                default: false
             },
-            Cromar: {
-                type: GraphQLBoolean
+            pintar: {
+                type: GraphQLBoolean,
+                default: false
             },
-            Pintar: {
-                type: GraphQLBoolean
-            },
-            Ubicacion: {
+            ubicacion: {
                 type: GraphQLString
             }
         }

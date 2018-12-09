@@ -7,9 +7,6 @@ var marcaModel = require('../../models/marca');
 exports.add = {
   type: marcaType.marcaType,
   args: {
-    idMarca: {
-      type: new GraphQLNonNull(GraphQLInt),
-    },
     marca: {
       type: new GraphQLNonNull(GraphQLString),
     }

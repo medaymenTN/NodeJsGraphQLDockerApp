@@ -16,49 +16,49 @@ exports.trabajoType = new GraphQLObjectType({
             idTrabajo: {
                 type: GraphQLInt
             },
-            FechaPresup: {
+            fechaPresup: {
                 type: GraphQLString
             },
-            IDCliente:{
+            idCliente:{
                 type: GraphQLInt
             },
-            IDAuto:{
+            idAuto:{
                 type: GraphQLInt
             },
-            Presup: {
+            presupuesto: {
                 type: GraphQLString
             },
-            ManoObra: {
+            manoObra: {
                 type: GraphQLString
             },
-            Repuestos: {
+            repuestos: {
                 type: GraphQLString
             },
-            Comentario: {
+            comentario: {
                 type: GraphQLString
             },
-            Estado: {
+            estado: {
                 type: GraphQLString
             },
-            FechaDesp: {
+            fechaDesp: {
                 type: GraphQLString
             },
-            FechaTurno: {
+            fechaTurno: {
                 type: GraphQLString
             },
-            HoraTurno: {
+            horaTurno: {
                 type: GraphQLString
             },
-            FechaCierra: {
+            fechaCierra: {
                 type: GraphQLString
             },
-            Seguro: {
+            seguro: {
                 type: GraphQLString
             },
-            Compañia: {
+            company: {
                 type: GraphQLString
             },
-            ComenRep: {
+            comenRep: {
                 type: GraphQLString
             }
         }

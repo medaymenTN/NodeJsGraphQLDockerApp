@@ -14,7 +14,7 @@ exports.marcaType = new GraphQLObjectType({
                 type: new GraphQLNonNull(GraphQLID)
             },
             idMarca: {
-                type: GraphQLInt
+                type: GraphQLInt,
             },
             marca: {
                 type: GraphQLString

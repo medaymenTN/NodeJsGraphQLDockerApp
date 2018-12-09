@@ -1,32 +1,51 @@
 var GraphQLNonNull = require('graphql').GraphQLNonNull;
 var GraphQLString = require('graphql').GraphQLString;
 var GraphQLBoolean = require('graphql').GraphQLBoolean;
-var autoType = require('../types/autoType');
-var autoModel = require('../../models/auto');
+var GraphQLInt = require('graphql').GraphQLInt;
+var tareaType = require('../types/tareaType');
+var tareaModel = require('../../models/tarea');
 
 
 exports.add = {
-  type: autoType.autoType,
-  args: {
-    modelo: {
-      type: new GraphQLNonNull(GraphQLString),
+    type: tareaType.tareaType,
+    args: {
+        idPersonal: {
+            type: new GraphQLNonNull(GraphQLInt)
+        },
+        idLocalizacion: {
+            type: new GraphQLNonNull(GraphQLInt)
+        },
+        estadoReparacion: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        color: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        comentario: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        reemplazar: {
+            type: new GraphQLNonNull(GraphQLBoolean)
+        },
+        reparar: {
+            type: new GraphQLNonNull(GraphQLBoolean)
+        },
+        cromar: {
+            type: new GraphQLNonNull(GraphQLBoolean)
+        },
+        pintar: {
+            type: new GraphQLNonNull(GraphQLBoolean)
+        },
+        ubicacion: {
+            type: new GraphQLNonNull(GraphQLString)
+        }
     },
-    tipo: {
-      type: new GraphQLNonNull(GraphQLString),
-    },
-    patente: {
-      type: new GraphQLNonNull(GraphQLString),
-    },
-    color: {
-      type: new GraphQLNonNull(GraphQLString),
+    resolve: async (root, args) => {
+        const uModel = new tareaModel(args);
+        const newTarea = await uModel.save();
+        if (!newTarea) {
+            throw new Error('error');
+        }
+        return newTarea
     }
-  },
-  resolve: async(root, args)=> {
-    const uModel = new autoModel(args);
-    const newAuto = await uModel.save();
-    if (!newAuto) {
-      throw new Error('error');
-    }
-    return newAuto
-  }
 };

@@ -65,7 +65,6 @@ exports.query = new GraphQLObjectType({
                 },
                 resolve: async (root, args) => {
                     if (args) {
-                        console.log(args);
                         const autos = await AutoModel.find(args);
                         if (!autos) {
                             throw new Error('error while fetching data autos')
@@ -116,12 +115,18 @@ exports.query = new GraphQLObjectType({
             },
             marcas: {
                 type: new GraphQLList(marcaType),
-                resolve: async () => {
-                    const marcas = await MarcasModel.find();
-                    if (!marcas) {
-                        throw new Error('error while fetching data marcas')
-                    }
-                    return marcas
+                args: {
+                    idMarca: {type: graphql.GraphQLInt},
+                    marca:  {type: graphql.GraphQLString}
+                },
+                resolve: async (root, args) => {
+
+                        const marcas = await MarcasModel.find(args);
+                        if (!marcas) {
+                            throw new Error('error while fetching data marcas')
+                        }
+                        return marcas
+
                 }
             },
             localizaciones: {

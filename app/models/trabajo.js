@@ -11,58 +11,58 @@ var TrabajoSchema = new Schema({
             message   : '{VALUE} is not an integer value'
         }
     },
-    FechaPresup: {
+    fechaPresup: {
         type: Date
     },
-    IDCliente:{
+    idCliente:{
         type: Number,
         required: false
     },
-    IDAuto:{
+    idAuto:{
         type: Number,
         required: false
     },
-    Presup: {
+    presupuesto: {
         type: String,
         required: true
     },
-    ManoObra: {
+    manoObra: {
         type: String,
         required: true
     },
-    Repuestos: {
+    repuestos: {
         type: String,
         required: true
     },
-    Comentario: {
+    comentario: {
         type: String,
         required: true
     },
-    Estado: {
+    estado: {
         type: String,
         required: true
     },
-    FechaDesp: {
+    fechaDesp: {
         type: Date
     },
-    FechaTurno: {
+    fechaTurno: {
         type: Date
     },
-    HoraTurno: {
+    horaTurno: {
         type: Date
     },
-    FechaCierra: {
+    fechaCierra: {
         type: Date
     },
-    Seguro: {
+    seguro: {
         type: String,
         required: true
     },
-    Compañia: {
+    company: {
         type: String,
         required: true
     },
-    ComenRep: {
+    comenRep: {
         type: String,
         required: true
     }

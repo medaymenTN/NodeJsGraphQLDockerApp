@@ -6,7 +6,7 @@ Sistema Taller para talleres de chapa y pintura de diferentes vehículos rodados
 
 you should have docker and docker-compose installed on your machine 
 
-## installation 
+## Installation 
 
 * clone the project from the repo 
 * cd -> project directory and run your project using the following command 

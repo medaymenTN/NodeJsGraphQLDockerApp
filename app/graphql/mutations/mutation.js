@@ -4,6 +4,7 @@ var deletebook = require('./deleteBook').remove;
 var addauto = require('./addAuto').add;
 var addcliente = require('./addCliente').add;
 var addmarca = require('./addMarca').add;
+var addtarea = require('./addTarea').add;
 
 module.exports = {
     addbook,
@@ -11,5 +12,6 @@ module.exports = {
     deletebook,
     addauto,
     addcliente,
-    addmarca
+    addmarca,
+    addtarea
 };

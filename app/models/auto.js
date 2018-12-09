@@ -2,6 +2,15 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var AutoSchema = new Schema({
+    idAuto: {
+        type: Number,
+        required: true,
+        unique: true,
+        validate : {
+            validator : Number.isInteger,
+            message   : '{VALUE} is not an integer value'
+        }
+    },
     modelo: {
         type: String,
         required: true

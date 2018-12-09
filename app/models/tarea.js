@@ -19,32 +19,32 @@ var TareaSchema = new Schema({
         type: Number,
             required: false
     },
-    EstadoRep: {
+    estadoReparacion: {
         type: String,
         required: true
     },
-    FechaModificacion: {
+    fechaModificacion: {
         type: Date
     },
-    Color: {
+    color: {
         type: String
     },
-    Comentario: {
+    comentario: {
         type: String
     },
-    Reemplazar: {
+    reemplazar: {
         type: Boolean
     },
-    Reparar: {
+    reparar: {
         type: Boolean
     },
-    Cromar: {
+    cromar: {
         type: Boolean
     },
-    Pintar: {
+    pintar: {
         type: Boolean
     },
-    Ubicacion: {
+    ubicacion: {
         type: String
     }
 });

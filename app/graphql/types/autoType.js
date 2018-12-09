@@ -20,6 +20,9 @@ exports.autoType = new GraphQLObjectType({
             id: {
                 type: new GraphQLNonNull(GraphQLID)
             },
+            idAuto: {
+                type: GraphQLInt
+            },
             idMarca: {
                 type: GraphQLInt
             },

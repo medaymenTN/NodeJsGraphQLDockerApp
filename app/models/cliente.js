@@ -2,9 +2,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ClienteSchema = new Schema({
-    idCliente:{
-        type: String,
-        required: true
+    idCliente: {
+        type: Number,
+        required: true,
+        unique: true,
+        validate : {
+            validator : Number.isInteger,
+            message   : '{VALUE} is not an integer value'
+        }
     },
     apellido: {
         type: String,

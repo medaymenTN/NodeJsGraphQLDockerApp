@@ -15,6 +15,9 @@ exports.clienteType = new GraphQLObjectType({
             id: {
                 type: new GraphQLNonNull(GraphQLID)
             },
+            idCliente: {
+                type: GraphQLInt
+            },
             apellido: {
                 type: GraphQLString
             },

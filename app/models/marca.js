@@ -4,8 +4,8 @@ var Schema = mongoose.Schema;
 var MarcaSchema = new Schema({
     idMarca: {
         type: Number,
-        required: true,
         unique: true,
+        autoIncrement: true,
         validate : {
             validator : Number.isInteger,
             message   : '{VALUE} is not an integer value'
