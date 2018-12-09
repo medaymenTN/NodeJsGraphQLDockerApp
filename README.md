@@ -1,5 +1,6 @@
-# NodeJsGraphQLDockerApp
-Simple crud App made with nodeJs and GraphQL under docker container
+## Taller v11 - Backend - NodeJs/GraphQL
+Fork from: NodeJsGraphQLDockerApp
+Sistema Taller para talleres de chapa y pintura de diferentes vehículos rodados
 
 ## Requirments 
 
@@ -21,10 +22,10 @@ you should have docker and docker-compose installed on your machine
  
  
 
-##Migrations
+## Migrations
 source: https://www.npmjs.com/package/migrate-mongo
 
-##Mongo CSV import example
+## Mongo CSV import example
  docker-compose exec mongo mongoimport --host mongo --db myappdb  --collection ciudads --type csv --fields idProvincia,idCiudad,ciudad,ciudadCorta --file /data/db/CodCiudad.csv
 
 
