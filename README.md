@@ -21,5 +21,12 @@ you should have docker and docker-compose installed on your machine
  
  
 
+##Migrations
+source: https://www.npmjs.com/package/migrate-mongo
+
+##Mongo CSV import example
+ docker-compose exec mongo mongoimport --host mongo --db myappdb  --collection ciudads --type csv --fields idProvincia,idCiudad,ciudad,ciudadCorta --file /data/db/CodCiudad.csv
+
+
 
 

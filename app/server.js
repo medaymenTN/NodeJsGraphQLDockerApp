@@ -3,8 +3,10 @@ const app = express();
 const mongoose = require('mongoose');
 const graphqlExpress = require("express-graphql");
 const schema = require('./graphql/schema').schema;
+const graphql = require('graphql');
 
-mongoose.connect('mongodb://mongo/myappdb', (err) => {
+
+mongoose.connect('mongodb://mongo/myappdb', {useNewUrlParser: true} , (err) => {
     if (err) throw err;
     console.log("connected to mongo");
 });
@@ -27,7 +29,7 @@ app.use('/graphql', graphqlExpress({
 
 app.get('/', (req, res) => {
 
-            res.send("Ursprung Sistema Taller New Generation ")
+            res.send("Ursprung Sistema Taller New Generation 2")
 
         }
 );

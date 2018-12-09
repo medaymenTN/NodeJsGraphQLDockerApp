@@ -3,32 +3,17 @@ var GraphQLObjectType = require('graphql').GraphQLObjectType;
 var mutation = require('./mutations/mutation');
 
 //Book Schema
-var queryType = require('./queries/bookQuery').bookQuery;
+var queryType = require('./queries/query').query;
 
 
-const bookSchema = new GraphQLSchema({
-  query: queryType,
-  mutation: new GraphQLObjectType({
+const schema = new GraphQLSchema({
+    query: queryType,
+    mutation: new GraphQLObjectType({
     name: 'Mutation',
     fields: mutation
   })
 });
 
-//Auto Schema
-/*
-var autoQueryType = require('./queries/autoQuery').autoQuery;
 
 
-const autoSchema = new GraphQLSchema({
-    query: autoQueryType,
-    mutation: new GraphQLObjectType({
-        name: 'Mutation',
-        fields: mutation
-    })
-});
-*/
-
-
-
-
-module.exports = { bookSchema };
+module.exports = { schema };

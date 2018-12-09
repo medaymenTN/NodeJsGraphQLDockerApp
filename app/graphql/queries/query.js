@@ -1,0 +1,159 @@
+var GraphQLObjectType = require('graphql').GraphQLObjectType;
+var GraphQLList = require('graphql').GraphQLList;
+var BookModel = require('../../models/book');
+var bookType = require('../types/bookType').bookType;
+var graphql = require('graphql');
+
+//Autos
+var AutoModel = require('../../models/auto');
+var autoType = require('../types/autoType').autoType;
+
+//Clientes
+var ClienteModel = require('../../models/cliente');
+var clienteType = require('../types/clienteType').clienteType;
+
+//Marcas
+var MarcasModel = require('../../models/marca');
+var marcaType = require('../types/marcaType').marcaType;
+
+//Trabajos
+var TrabajosModel = require('../../models/trabajo');
+var trabajoType = require('../types/trabajoType').trabajoType;
+
+//Tareas
+var TareasModel = require('../../models/tarea');
+var tareaType = require('../types/tareaType').tareaType;
+
+//Localizaciones
+var LocalizacionesModel = require('../../models/localizacion');
+var localizacionType = require('../types/localizacionType').localizacionType;
+
+//Ciudades
+var CiudadesModel = require('../../models/ciudad');
+var ciudadType = require('../types/ciudadType').ciudadType;
+
+//Provincias
+var ProvinciasModel = require('../../models/provincia');
+var provinciaType = require('../types/provinciaType').provinciaType;
+
+// Query
+exports.query = new GraphQLObjectType({
+    name: 'Query',
+    fields: () => {
+        return {
+            books: {
+                type: new GraphQLList(bookType),
+                resolve: async () => {
+                    const books = await BookModel.find();
+                    if (!books) {
+                        throw new Error('error while fetching data books')
+                    }
+                    return books
+                }
+
+            },
+            autos: {
+                type: new GraphQLList(autoType),
+                args: {
+                    _id :       {type: graphql.GraphQLID},
+                    id:         {type: graphql.GraphQLID},
+                    modelo:     {type: graphql.GraphQLString},
+                    tipo :      {type: graphql.GraphQLString},
+                    patenteo:   {type: graphql.GraphQLString},
+                    color:      {type: graphql.GraphQLString},
+                    marca:      {type: graphql.GraphQLString}
+                },
+                resolve: async (root, args) => {
+                    if (args) {
+                        console.log(args);
+                        const autos = await AutoModel.find(args);
+                        if (!autos) {
+                            throw new Error('error while fetching data autos')
+                        }
+                        return autos
+                    } else {
+                        const autos = await AutoModel.find();
+                        if (!autos) {
+                            throw new Error('error while fetching data autos')
+                        }
+                        return autos
+                    }
+                }
+            },
+            clientes: {
+                type: new GraphQLList(clienteType),
+                resolve: async () => {
+                    const clientes = await ClienteModel.find();
+                    if (!clientes) {
+                        throw new Error('error while fetching data clientes')
+                    }
+                    return clientes
+                }
+            },
+            ciudades: {
+                type: new GraphQLList(ciudadType),
+                resolve: async () => {
+                    const ciudades = await CiudadesModel.find();
+                    if (!ciudades) {
+                        throw new Error('error while fetching data ciudades')
+                    }
+                    return ciudades
+                }
+            },
+            provincias: {
+                type: new GraphQLList(provinciaType
+
+
+
+                ),
+                resolve: async () => {
+                    const provincias = await ProvinciasModel.find();
+                    if (!provincias) {
+                        throw new Error('error while fetching data provincias')
+                    }
+                    return provincias
+                }
+            },
+            marcas: {
+                type: new GraphQLList(marcaType),
+                resolve: async () => {
+                    const marcas = await MarcasModel.find();
+                    if (!marcas) {
+                        throw new Error('error while fetching data marcas')
+                    }
+                    return marcas
+                }
+            },
+            localizaciones: {
+                type: new GraphQLList(localizacionType),
+                resolve: async () => {
+                    const localizaciones = await LocalizacionesModel.find();
+                    if (!localizaciones) {
+                        throw new Error('error while fetching data localizaciones')
+                    }
+                    return localizaciones
+                }
+            },
+            trabajos:{
+                type:  new GraphQLList(trabajoType),
+                resolve: async () => {
+                    const trabajos = await TrabajosModel.find();
+                    if (!trabajos) {
+                        throw new Error('error while fetching data trabajos')
+                    }
+                    return trabajos
+                }
+            },
+            tareas:{
+                type:  new GraphQLList(tareaType),
+                resolve: async () => {
+                    const tareas = await TareasModel.find();
+                    if (!tareas) {
+                        throw new Error('error while fetching data tareas')
+                    }
+                    return tareas
+                }
+            }
+        }
+    }
+});

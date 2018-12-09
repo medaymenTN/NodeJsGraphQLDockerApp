@@ -1,36 +1,30 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var AutoSchema = new Schema({
-    modelo: {
-        type: String,
-        required: true
-    },
-    tipo: {
-        type: String,
-        required: true
-    },
-    idMarca: {
+var CiudadSchema = new Schema({
+    idCiudad: {
         type: Number,
         required: true,
+        unique: true,
         validate : {
             validator : Number.isInteger,
             message   : '{VALUE} is not an integer value'
         }
     },
-    patente: {
+    idProvincia: {
+        type: Number,
+        required: true
+    },
+    ciudad: {
         type: String,
         required: true
     },
-    color: {
+    ciudadCorta: {
         type: String,
         required: false
-    },
-    fechaAlta: {
-        type: Date,
-        default: Date.now
     }
 
 });
-var AutoModel = mongoose.model('auto', AutoSchema);
-module.exports = AutoModel;
+
+var CiudadModel = mongoose.model('ciudad', CiudadSchema);
+module.exports = CiudadModel;
