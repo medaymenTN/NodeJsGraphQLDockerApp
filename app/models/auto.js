@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var autoIncrement = require('mongoose-easy-auto-increment');
 
 var AutoSchema = new Schema({
     idAuto: {
@@ -41,5 +42,6 @@ var AutoSchema = new Schema({
     }
 
 });
+AutoSchema.plugin(autoIncrement, { field: 'idAuto', collection: 'counters' });
 var AutoModel = mongoose.model('auto', AutoSchema);
 module.exports = AutoModel;

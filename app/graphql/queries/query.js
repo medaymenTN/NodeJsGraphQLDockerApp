@@ -55,11 +55,11 @@ exports.query = new GraphQLObjectType({
             autos: {
                 type: new GraphQLList(autoType),
                 args: {
-                    _id :       {type: graphql.GraphQLID},
-                    id:         {type: graphql.GraphQLID},
+                    _id:        {type: graphql.GraphQLID},
+                    id:         {type: graphql.GraphQLInt},
                     modelo:     {type: graphql.GraphQLString},
-                    tipo :      {type: graphql.GraphQLString},
-                    patenteo:   {type: graphql.GraphQLString},
+                    tipo:       {type: graphql.GraphQLString},
+                    patente:    {type: graphql.GraphQLString},
                     color:      {type: graphql.GraphQLString},
                     marca:      {type: graphql.GraphQLString}
                 },
@@ -81,8 +81,11 @@ exports.query = new GraphQLObjectType({
             },
             clientes: {
                 type: new GraphQLList(clienteType),
-                resolve: async () => {
-                    const clientes = await ClienteModel.find();
+                args: {
+                    idCliente: {type: graphql.GraphQLInt},
+                },
+                resolve: async (root, args) => {
+                    const clientes = await ClienteModel.find(args);
                     if (!clientes) {
                         throw new Error('error while fetching data clientes')
                     }
@@ -100,11 +103,7 @@ exports.query = new GraphQLObjectType({
                 }
             },
             provincias: {
-                type: new GraphQLList(provinciaType
-
-
-
-                ),
+                type: new GraphQLList(provinciaType),
                 resolve: async () => {
                     const provincias = await ProvinciasModel.find();
                     if (!provincias) {
@@ -116,43 +115,53 @@ exports.query = new GraphQLObjectType({
             marcas: {
                 type: new GraphQLList(marcaType),
                 args: {
-                    idMarca: {type: graphql.GraphQLInt},
-                    marca:  {type: graphql.GraphQLString}
+                    idMarca:    {type: graphql.GraphQLInt},
+                    marca:      {type: graphql.GraphQLString}
                 },
                 resolve: async (root, args) => {
 
-                        const marcas = await MarcasModel.find(args);
-                        if (!marcas) {
-                            throw new Error('error while fetching data marcas')
-                        }
-                        return marcas
+                    const marcas = await MarcasModel.find(args);
+                    if (!marcas) {
+                        throw new Error('error while fetching data marcas')
+                    }
+                    return marcas
 
                 }
             },
             localizaciones: {
                 type: new GraphQLList(localizacionType),
-                resolve: async () => {
-                    const localizaciones = await LocalizacionesModel.find();
+                args: {
+                    idLocalizacion: {type: graphql.GraphQLInt},
+                },
+                resolve: async (root,args) => {
+                    const localizaciones = await LocalizacionesModel.find(args);
                     if (!localizaciones) {
                         throw new Error('error while fetching data localizaciones')
                     }
                     return localizaciones
                 }
             },
-            trabajos:{
-                type:  new GraphQLList(trabajoType),
-                resolve: async () => {
-                    const trabajos = await TrabajosModel.find();
+            trabajos: {
+                type: new GraphQLList(trabajoType),
+                args: {
+                    idCliente: {type: graphql.GraphQLInt},
+                    idTrabajo: {type: graphql.GraphQLInt}
+                },
+                resolve: async (root,args) => {
+                    const trabajos = await TrabajosModel.find(args);
                     if (!trabajos) {
                         throw new Error('error while fetching data trabajos')
                     }
                     return trabajos
                 }
             },
-            tareas:{
-                type:  new GraphQLList(tareaType),
-                resolve: async () => {
-                    const tareas = await TareasModel.find();
+            tareas: {
+                type: new GraphQLList(tareaType),
+                args: {
+                    idTrabajo: {type: graphql.GraphQLInt}
+                },
+                resolve: async (root,args) => {
+                    const tareas = await TareasModel.find(args);
                     if (!tareas) {
                         throw new Error('error while fetching data tareas')
                     }

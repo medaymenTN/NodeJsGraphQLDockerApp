@@ -1,11 +1,15 @@
 var GraphQLNonNull = require('graphql').GraphQLNonNull;
 var GraphQLString = require('graphql').GraphQLString;
+var GraphQLInt = require('graphql').GraphQLInt;
 var autoType = require('../types/autoType');
 var autoModel = require('../../models/auto');
 
 exports.add = {
   type: autoType.autoType,
   args: {
+    idMarca: {
+      type: new GraphQLNonNull(GraphQLInt),
+    },
     modelo: {
       type: new GraphQLNonNull(GraphQLString),
     },

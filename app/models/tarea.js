@@ -5,23 +5,31 @@ var TareaSchema = new Schema({
     idTrabajo: {
         type: Number,
         required: true,
-        unique: true,
-        validate : {
-            validator : Number.isInteger,
-            message   : '{VALUE} is not an integer value'
+        validate: {
+            validator: Number.isInteger,
+            message: '{VALUE} is not an integer value'
         }
     },
-    idPersonal:{
+    idPersonal: {
         type: Number,
-            required: false
+        required: false
+        ,
+        validate: {
+            validator: Number.isInteger,
+            message: '{VALUE} is not an integer value'
+        }
     },
-    idLocalizacion:{
+    idLocalizacion: {
         type: Number,
-            required: false
+        required: false,
+        validate: {
+            validator: Number.isInteger,
+            message: '{VALUE} is not an integer value'
+        }
+
     },
     estadoReparacion: {
-        type: String,
-        required: true
+        type: String
     },
     fechaModificacion: {
         type: Date
@@ -48,6 +56,7 @@ var TareaSchema = new Schema({
         type: String
     }
 });
+
 
 var TareaModel = mongoose.model('tarea', TareaSchema);
 module.exports = TareaModel;

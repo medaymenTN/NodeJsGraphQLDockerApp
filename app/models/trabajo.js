@@ -1,48 +1,58 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var autoIncrement = require('mongoose-easy-auto-increment');
 
 var TrabajoSchema = new Schema({
     idTrabajo: {
         type: Number,
-        required: true,
-        unique: true,
-        validate : {
-            validator : Number.isInteger,
-            message   : '{VALUE} is not an integer value'
+        validate: {
+            validator: Number.isInteger,
+            message: '{VALUE} is not an integer value'
         }
     },
-    fechaPresup: {
+    fechaPresupuesto: {
         type: Date
     },
-    idCliente:{
+    idCliente: {
         type: Number,
-        required: false
+        required: false,
+        validate: {
+            validator: Number.isInteger,
+            message: '{VALUE} is not an integer value'
+        }
     },
-    idAuto:{
+    idAuto: {
         type: Number,
-        required: false
+        required: false,
+        validate: {
+            validator: Number.isInteger,
+            message: '{VALUE} is not an integer value'
+        }
     },
     presupuesto: {
-        type: String,
-        required: true
+        type: String
     },
     manoObra: {
-        type: String,
-        required: true
+        type: String
     },
     repuestos: {
-        type: String,
-        required: true
+        type: String
     },
     comentario: {
-        type: String,
-        required: true
+        type: String
     },
     estado: {
+        // Estado del trabajo
+        // D = despachado
+        // P = pendiente
+        // C = Cancelado
+        // T = Terminado
+        // E = Entregado
+
         type: String,
         required: true
     },
-    fechaDesp: {
+    fechaDespacho: {
         type: Date
     },
     fechaTurno: {
@@ -51,22 +61,20 @@ var TrabajoSchema = new Schema({
     horaTurno: {
         type: Date
     },
-    fechaCierra: {
+    fechaCierre: {
         type: Date
     },
     seguro: {
-        type: String,
-        required: true
+        type: String
     },
     company: {
-        type: String,
-        required: true
+        type: String
     },
     comenRep: {
-        type: String,
-        required: true
+        type: String
     }
 });
 
+TrabajoSchema.plugin(autoIncrement, {field: 'idTrabajo', collection: 'counters'});
 var TrabajoModel = mongoose.model('trabajo', TrabajoSchema);
 module.exports = TrabajoModel;

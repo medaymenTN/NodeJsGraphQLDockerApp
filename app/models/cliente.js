@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var autoIncrement = require('mongoose-easy-auto-increment');
 
 var ClienteSchema = new Schema({
     idCliente: {
@@ -20,30 +21,26 @@ var ClienteSchema = new Schema({
         required: true
     },
     telefono: {
-        type: String,
-        required: true
+        type: String
     },
     celular: {
-        type: String,
-        required: true
+        type: String
     },
     direccion: {
         type: String,
         required: true
     },
     direccion2: {
-        type: String,
-        required: true
+        type: String
     },
     comentario : {
-        type: String,
-        required: true
+        type: String
     },
-    codCiudad:{
+    idCiudad:{
         type: Number,
         required: false
     },
-    codProvincia:{
+    idProvincia:{
         type: Number,
         required: false
     },
@@ -53,5 +50,7 @@ var ClienteSchema = new Schema({
     }
 
 });
+
+ClienteSchema.plugin(autoIncrement, { field: 'idCliente', collection: 'counters' });
 var ClienteModel = mongoose.model('cliente', ClienteSchema);
 module.exports = ClienteModel;

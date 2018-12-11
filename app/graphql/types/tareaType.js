@@ -6,6 +6,11 @@ var GraphQLInt = require('graphql').GraphQLInt;
 var GraphQLBoolean = require('graphql').GraphQLBoolean;
 
 
+//Localizaciones
+var LocalizacionesModel = require('../../models/localizacion');
+var localizacionType = require('../types/localizacionType').localizacionType;
+
+
 // Auto Type
 exports.tareaType = new GraphQLObjectType({
     name: 'tareas',
@@ -14,7 +19,7 @@ exports.tareaType = new GraphQLObjectType({
             id: {
                 type: new GraphQLNonNull(GraphQLID)
             },
-            idTarea: {
+            idTrabajo: {
                 type: GraphQLInt
             },
             idPersonal:{
@@ -22,6 +27,16 @@ exports.tareaType = new GraphQLObjectType({
             },
             idLocalizacion:{
                 type: GraphQLInt
+            },
+            localizacion: {
+                type: GraphQLString,
+                resolve: async (tarea) => {
+                    const queLocalizacion = await LocalizacionesModel.findOne({'idLocalizacion':tarea.idLocalizacion});
+                    if (!queLocalizacion) {
+                        throw new Error('error while fetching data localizacion related')
+                    }
+                    return queLocalizacion.localizacion;
+                }
             },
             estadoReparacion: {
                 type: GraphQLString

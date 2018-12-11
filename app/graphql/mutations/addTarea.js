@@ -9,6 +9,9 @@ var tareaModel = require('../../models/tarea');
 exports.add = {
     type: tareaType.tareaType,
     args: {
+        idTrabajo: {
+            type: new GraphQLNonNull(GraphQLInt)
+        },
         idPersonal: {
             type: new GraphQLNonNull(GraphQLInt)
         },

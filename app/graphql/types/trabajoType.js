@@ -3,7 +3,15 @@ var GraphQLNonNull = require('graphql').GraphQLNonNull;
 var GraphQLID = require('graphql').GraphQLID;
 var GraphQLString = require('graphql').GraphQLString;
 var GraphQLInt = require('graphql').GraphQLInt;
+var GraphQLList = require('graphql').GraphQLList;
 
+//Tareas
+var TareasModel = require('../../models/tarea');
+var tareaType = require('../types/tareaType').tareaType;
+
+//Autos
+var AutoModel = require('../../models/auto');
+var autoType = require('../types/autoType').autoType;
 
 // Auto Type
 exports.trabajoType = new GraphQLObjectType({
@@ -16,7 +24,17 @@ exports.trabajoType = new GraphQLObjectType({
             idTrabajo: {
                 type: GraphQLInt
             },
-            fechaPresup: {
+            tareas: {
+                type: new GraphQLList(tareaType),
+                resolve: async (trabajo) => {
+                    const lastareas = await TareasModel.find({'idTrabajo':trabajo.idTrabajo});
+                    if (!lastareas) {
+                        throw new Error('error while fetching data tarea related')
+                    }
+                    return lastareas;
+                }
+            },
+            fechaPresupuesto: {
                 type: GraphQLString
             },
             idCliente:{
@@ -24,6 +42,16 @@ exports.trabajoType = new GraphQLObjectType({
             },
             idAuto:{
                 type: GraphQLInt
+            },
+            auto: {
+                type: autoType,
+                resolve: async (trabajo) => {
+                    const elauto = await AutoModel.findOne({'idAuto':trabajo.idAuto});
+                    if (!elauto) {
+                        throw new Error('error while fetching data localizacion related')
+                    }
+                    return elauto;
+                }
             },
             presupuesto: {
                 type: GraphQLString
@@ -40,7 +68,7 @@ exports.trabajoType = new GraphQLObjectType({
             estado: {
                 type: GraphQLString
             },
-            fechaDesp: {
+            fechaDespacho: {
                 type: GraphQLString
             },
             fechaTurno: {
@@ -49,7 +77,7 @@ exports.trabajoType = new GraphQLObjectType({
             horaTurno: {
                 type: GraphQLString
             },
-            fechaCierra: {
+            fechaCierre: {
                 type: GraphQLString
             },
             seguro: {
