@@ -8,7 +8,13 @@ you should have docker and docker-compose installed on your machine
 ## installation 
 
 * clone the project from the repo 
+* build your project using
+
+ ```
+ $ docker-compose build
+ ```
 * cd -> project directory and run your project using the following command 
+
  ```
  $ docker-compose up 
  ```
